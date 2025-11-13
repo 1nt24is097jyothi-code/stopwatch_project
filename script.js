@@ -70,3 +70,47 @@ function updateTimerDisplay() {
   const secs = String(timerTime % 60).padStart(2, '0');
   document.getElementById("timerDisplay").innerText = `${mins}:${secs}`;
 }
+let swInterval;
+let swTime = 0;
+
+// Start Stopwatch
+document.getElementById("startSW").onclick = function() {
+  clearInterval(swInterval);
+  swInterval = setInterval(() => {
+    swTime++;
+    updateStopwatchDisplay();
+  }, 1000);
+};
+
+// Stop Stopwatch
+document.getElementById("stopSW").onclick = function() {
+  clearInterval(swInterval);
+};
+
+// Reset Stopwatch
+document.getElementById("resetSW").onclick = function() {
+  clearInterval(swInterval);
+  swTime = 0;
+  updateStopwatchDisplay();
+  document.getElementById("lapList").innerHTML = "";
+};
+
+// Record Lap
+document.getElementById("lapSW").onclick = function() {
+  const lapItem = document.createElement("li");
+  lapItem.textContent = "Lap: " + formatTime(swTime);
+  document.getElementById("lapList").appendChild(lapItem);
+};
+
+// Update Stopwatch Display
+function updateStopwatchDisplay() {
+  document.getElementById("stopwatchDisplay").textContent = formatTime(swTime);
+}
+
+// Format Time in hh:mm:ss
+function formatTime(totalSeconds) {
+  const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+  const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+  const seconds = String(totalSeconds % 60).padStart(2, '0');
+  return ${hours}:${minutes}:${seconds};
+}
