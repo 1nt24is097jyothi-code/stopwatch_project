@@ -58,3 +58,26 @@ ul#laps li {
   padding: 5px;
   border-radius: 5px;
 }
+/* Stopwatch specific styling */
+#stopwatchSection {
+  border-top: 2px solid #007bff;
+  margin-top: 20px;
+  padding-top: 15px;
+}
+
+#lapList {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px auto;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+#lapList li {
+  background: #e8e8e8;
+  padding: 6px 10px;
+  margin: 4px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  text-align: left;
+}
